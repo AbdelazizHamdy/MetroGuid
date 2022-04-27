@@ -10,11 +10,18 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../logic/line_1_repo.dart';
 import 'widgets/from_station.dart';
 
-class MetroHome extends StatelessWidget {
+class MetroHome extends StatefulWidget {
    MetroHome(  {Key? key,}) : super(key: key);
 
+  @override
+  State<MetroHome> createState() => _MetroHomeState();
+}
+
+class _MetroHomeState extends State<MetroHome> {
    TextEditingController fromController = TextEditingController();
+
    TextEditingController toController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,16 +68,18 @@ class MetroHome extends StatelessWidget {
                       height: 40.0,
                       width: double.infinity,
                       child: TextFormField(
-                          // readOnly: true,
+                          readOnly: true,
                           controller: fromController,
-                          onTap: ()
+                          onTap: ()async
                           {
-                      //       Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>  FromStations(),
-                      //   ),
-                      // );
+                            final String stationName = await
+                            Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>  FromStations(),
+                        ),
+                      );
+                            fromController.text = stationName;
                       }),
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -110,16 +119,18 @@ class MetroHome extends StatelessWidget {
                       height: 40.0,
                       width: double.infinity,
                       child: TextFormField(
-                          // readOnly: true,
+                          readOnly: true,
                           controller: toController,
-                          onTap: ()
+                          onTap: ()async
                           {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>  ToStations(),
-                            //   ),
-                            // );
+                            final String stationName = await
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  ToStations(),
+                              ),
+                            );
+                            toController.text = stationName;
                           }),
                       decoration: BoxDecoration(
                         border: Border.all(

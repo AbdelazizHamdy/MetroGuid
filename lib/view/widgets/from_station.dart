@@ -44,14 +44,14 @@ class FromStations extends StatelessWidget {
                             TextButton(
                              onPressed: () {
 
-                               StationsLine1Repo.line1.stations[index].name;
+                               // StationsLine1Repo.line1.stations[index].name;
                             Navigator.pop(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>  MetroHome( ),
-                                  // StationsLine1Repo.line1.stations[index],
-
-                              ),
+                              context,StationsLine1Repo.line1.stations[index].name
+                              // MaterialPageRoute(
+                              //   builder: (context) =>  MetroHome( ),
+                              //     // StationsLine1Repo.line1.stations[index],
+                              //
+                              // ),
                             );
                           },
                             child: Text(
