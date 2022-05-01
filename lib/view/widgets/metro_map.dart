@@ -5,18 +5,21 @@ class MetroMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
-      child: Scaffold(
-        appBar:  AppBar(
-          elevation: 20.0,
-          backgroundColor: Colors.deepOrangeAccent,
-          title: const Text('Metro Lines Map'),
-        ),
-        body: Center(
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    return  Scaffold(backgroundColor: Colors.deepOrange,
+      body: SafeArea(
+        child: Center(
             child: Column(
               children: [
-                Image.asset('assets/images/metroMap.jpeg',
-                    fit:BoxFit.fitHeight, ),
+                Container(
+                  width: width * 1,
+                  height: height * 0.9,
+                  child: Image.asset(
+                    'assets/images/metroMap.jpeg',
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ],
             ),
         ),

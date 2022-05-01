@@ -4,8 +4,8 @@ import '../../logic/line_1_repo.dart';
 import '../../logic/line_2_repo.dart';
 import '../../logic/line_3_repo.dart';
 
-class ToStations extends StatelessWidget {
-   const ToStations({Key? key}) : super(key: key);
+class CostFrom extends StatelessWidget {
+  const CostFrom({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ToStations extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              const Text('Choose a Terminal Station ',
+              const Text('Choose a Start Station ',
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold

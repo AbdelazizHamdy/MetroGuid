@@ -4,8 +4,8 @@ import '../../logic/line_1_repo.dart';
 import '../../logic/line_2_repo.dart';
 import '../../logic/line_3_repo.dart';
 
-class ToStations extends StatelessWidget {
-   const ToStations({Key? key}) : super(key: key);
+class CostTo extends StatelessWidget {
+  const CostTo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:metro_guid/logic/line_1_repo.dart';
 import 'package:timelines/timelines.dart';
-import '../../logic/line_1_repo.dart';
 import '../../logic/line_2_repo.dart';
 import '../../logic/line_3_repo.dart';
 
-class ToStations extends StatelessWidget {
-   const ToStations({Key? key}) : super(key: key);
+class FromStations extends StatelessWidget {
+   const FromStations( {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +17,11 @@ class ToStations extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              const Text('Choose a Terminal Station ',
+              const Text('Choose a Start Station ',
                 style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold
-                ),
+                fontSize: 18,
+                  fontWeight: FontWeight.bold
+              ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -29,8 +29,8 @@ class ToStations extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                      left: 1.0,
-                      top: 2.0,
+                        left: 1.0,
+                        top: 2.0,
                     ),
                     child: Container(
                       width: width * 0.457,
@@ -78,7 +78,7 @@ class ToStations extends StatelessWidget {
                                     },
                                     child: Text(StationsLine1Repo.line1.stations[index].name!,
                                       style: const TextStyle(
-                                        color: Color(0xFFF9A825),
+                                          color: Color(0xFFF9A825),
                                         textBaseline: TextBaseline.alphabetic,
                                         fontSize: 18,
                                       ),
