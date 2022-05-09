@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:timelines/timelines.dart';
 import '../../logic/line_1_repo.dart';
@@ -5,7 +6,7 @@ import '../../logic/line_2_repo.dart';
 import '../../logic/line_3_repo.dart';
 
 class ToStations extends StatelessWidget {
-   const ToStations({Key? key}) : super(key: key);
+  const ToStations({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +18,9 @@ class ToStations extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              const Text('Choose a Terminal Station ',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold
-                ),
+              Text(
+                'Choose a Terminal Station'.tr().toString(),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,25 +34,28 @@ class ToStations extends StatelessWidget {
                     child: Container(
                       width: width * 0.457,
                       color: Colors.black54,
-                      child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Container(
-                            child: const Text(
-                              'Line 1',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                            child: Center(
+                              child: Text(
+                                'Line 1'.tr().toString(),
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
                             ),
                             color: Colors.yellow.shade800,
-                            height: 40,
+                            height: height * 0.05,
                             width: double.infinity,
                           ),
                           Container(
-                            height: MediaQuery.of(context).size.height * 0.847,
+                            height: height * 0.847,
                             child: Timeline.tileBuilder(
                               shrinkWrap: true,
                               theme: TimelineThemeData.raw(
@@ -62,21 +64,28 @@ class ToStations extends StatelessWidget {
                                 nodePosition: 0.8,
                                 indicatorPosition: 0.5,
                                 indicatorTheme: IndicatorTheme.of(context),
-                                connectorTheme: const ConnectorThemeData(color: Colors.blue,thickness: 5.0,),
+                                connectorTheme: const ConnectorThemeData(
+                                  color: Colors.blue,
+                                  thickness: 5.0,
+                                ),
                                 nodeItemOverlap: false,
                               ),
                               builder: TimelineTileBuilder.fromStyle(
                                 contentsAlign: ContentsAlign.reverse,
                                 addRepaintBoundaries: true,
-                                contentsBuilder: (context, index) =>  Padding(
+                                contentsBuilder: (context, index) => Padding(
                                   padding: const EdgeInsets.all(20.0),
-                                  child:  TextButton(
+                                  child: TextButton(
                                     onPressed: () {
                                       Navigator.pop(
-                                        context,StationsLine1Repo.line1.stations[index].name,
+                                        context,
+                                        StationsLine1Repo
+                                            .line1.stations[index].name,
                                       );
                                     },
-                                    child: Text(StationsLine1Repo.line1.stations[index].name!,
+                                    child: Text(
+                                      StationsLine1Repo
+                                          .line1.stations[index].name!,
                                       style: const TextStyle(
                                         color: Color(0xFFF9A825),
                                         textBaseline: TextBaseline.alphabetic,
@@ -85,7 +94,8 @@ class ToStations extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                itemCount: StationsLine1Repo.line1.stations.length,
+                                itemCount:
+                                    StationsLine1Repo.line1.stations.length,
                               ),
                             ),
                           ),
@@ -93,7 +103,6 @@ class ToStations extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   Column(
                     children: [
                       Padding(
@@ -104,25 +113,28 @@ class ToStations extends StatelessWidget {
                         child: Container(
                           width: width * 0.457,
                           color: Colors.black54,
-                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Container(
-                                child: const Text(
-                                  'Line 2',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
+                                child: Center(
+                                  child: Text(
+                                    'Line 2'.tr().toString(),
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
                                   ),
                                 ),
                                 color: Colors.yellow.shade800,
-                                height: 40,
+                                height: height * 0.05,
                                 width: double.infinity,
                               ),
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.847,
+                                height: height * 0.847,
                                 child: Timeline.tileBuilder(
                                   shrinkWrap: true,
                                   theme: TimelineThemeData.raw(
@@ -131,36 +143,49 @@ class ToStations extends StatelessWidget {
                                     nodePosition: 0.8,
                                     indicatorPosition: 0.5,
                                     indicatorTheme: IndicatorTheme.of(context),
-                                    connectorTheme: const ConnectorThemeData(color: Colors.red,thickness: 5.0),
+                                    connectorTheme: const ConnectorThemeData(
+                                      color: Colors.red,
+                                      thickness: 5.0,
+                                    ),
                                     nodeItemOverlap: false,
                                   ),
                                   builder: TimelineTileBuilder.fromStyle(
                                     contentsAlign: ContentsAlign.reverse,
                                     addRepaintBoundaries: true,
-                                    contentsBuilder: (context, index) =>  Padding(
+                                    contentsBuilder: (context, index) =>
+                                        Padding(
                                       padding: const EdgeInsets.all(20.0),
-                                      child:  TextButton(
+                                      child: TextButton(
                                         onPressed: () {
                                           Navigator.pop(
-                                            context,StationsLine2Repo.line2.stations[index].name,
+                                            context,
+                                            StationsLine2Repo
+                                                .line2.stations[index].name,
                                           );
                                         },
-                                        child: Text(StationsLine2Repo.line2.stations[index].name!,
+                                        child: Text(
+                                          StationsLine2Repo
+                                              .line2.stations[index].name!,
                                           style: const TextStyle(
                                             color: Color(0xFFF9A825),
-                                            textBaseline: TextBaseline.alphabetic,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
                                             fontSize: 18,
                                           ),
                                         ),
                                       ),
                                     ),
-                                    itemCount: StationsLine2Repo.line2.stations.length,
+                                    itemCount:
+                                        StationsLine2Repo.line2.stations.length,
                                   ),
                                 ),
                               ),
                             ],
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: height * 0.02,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
@@ -170,25 +195,28 @@ class ToStations extends StatelessWidget {
                         child: Container(
                           width: width * 0.457,
                           color: Colors.black54,
-                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Container(
-                                child: const Text(
-                                  'Line 3',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
+                                child:  Center(
+                                  child: Text(
+                                    'Line 3'.tr().toString(),
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
                                   ),
                                 ),
                                 color: Colors.yellow.shade800,
-                                height: 40,
+                                height: height * 0.05,
                                 width: double.infinity,
                               ),
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.847,
+                                height: height * 0.847,
                                 child: Timeline.tileBuilder(
                                   shrinkWrap: true,
                                   theme: TimelineThemeData.raw(
@@ -197,30 +225,40 @@ class ToStations extends StatelessWidget {
                                     nodePosition: 0.8,
                                     indicatorPosition: 0.5,
                                     indicatorTheme: IndicatorTheme.of(context),
-                                    connectorTheme: const ConnectorThemeData(color: Colors.green,thickness: 5.0),
+                                    connectorTheme: const ConnectorThemeData(
+                                      color: Colors.green,
+                                      thickness: 5.0,
+                                    ),
                                     nodeItemOverlap: false,
                                   ),
                                   builder: TimelineTileBuilder.fromStyle(
                                     contentsAlign: ContentsAlign.reverse,
                                     addRepaintBoundaries: true,
-                                    contentsBuilder: (context, index) =>  Padding(
+                                    contentsBuilder: (context, index) =>
+                                        Padding(
                                       padding: const EdgeInsets.all(20.0),
-                                      child:  TextButton(
+                                      child: TextButton(
                                         onPressed: () {
                                           Navigator.pop(
-                                            context,StationsLine3Repo.line3.stations[index].name,
+                                            context,
+                                            StationsLine3Repo
+                                                .line3.stations[index].name,
                                           );
                                         },
-                                        child: Text(StationsLine3Repo.line3.stations[index].name!,
+                                        child: Text(
+                                          StationsLine3Repo
+                                              .line3.stations[index].name!,
                                           style: const TextStyle(
                                             color: Color(0xFFF9A825),
-                                            textBaseline: TextBaseline.alphabetic,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
                                             fontSize: 18,
                                           ),
                                         ),
                                       ),
                                     ),
-                                    itemCount: StationsLine3Repo.line3.stations.length,
+                                    itemCount:
+                                        StationsLine3Repo.line3.stations.length,
                                   ),
                                 ),
                               ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:metro_guid/logic/metro_lines.dart';
 import 'package:timelines/timelines.dart';
@@ -17,7 +18,7 @@ class RouteView extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: height * 1,
+                height: height * 0.97,
                 width: width * 1,
                 color: Colors.black54,
                 child: Column(
@@ -25,24 +26,9 @@ class RouteView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Container(
-                      child: const Text(
-                        'Your Route',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                        ),
-                      ),
-                      color: Colors.yellow.shade800,
-                      height: 45,
-                      width: double.infinity,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Number of Stations: ${stations.length}',
+                      child:  Center(
+                        child: Text(
+                          'Your Route'.tr().toString(),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             color: Colors.white,
@@ -50,10 +36,36 @@ class RouteView extends StatelessWidget {
                             fontSize: 25,
                           ),
                         ),
+                      ),
+                      color: Colors.yellow.shade800,
+                      height: height * 0.06,
+                      width: double.infinity,
+                    ),
+                    SizedBox(height: height * 0.02,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Number of Stations: '.tr().toString(),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
+                        ),
+                        Text('${stations.length}',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
+                        ),
+
                       ],
                     ),
-                    Flexible(
-                      // height: MediaQuery.of(context).size.height * 0.9,
+                    Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: Timeline.tileBuilder(
@@ -64,14 +76,17 @@ class RouteView extends StatelessWidget {
                             nodePosition: 0.8,
                             indicatorPosition: 0.5,
                             indicatorTheme: IndicatorTheme.of(context),
-                            connectorTheme: const ConnectorThemeData(color: Colors.blue,thickness: 5.0,),
+                            connectorTheme: const ConnectorThemeData(
+                              color: Colors.blue,
+                              thickness: 5.0,
+                            ),
                             nodeItemOverlap: false,
                           ),
                           builder: TimelineTileBuilder.fromStyle(
                             contentsAlign: ContentsAlign.reverse,
                             addRepaintBoundaries: true,
                             contentsBuilder: (context, index) =>  Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 20.0),
+                              padding: const EdgeInsets.symmetric(vertical: 10.0),
                               child:  Text(stations[index].name!,
                                 style: const TextStyle(
                                   color: Color(0xFFF9A825),

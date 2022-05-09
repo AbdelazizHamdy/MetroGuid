@@ -1,0 +1,23 @@
+{
+  "Metro" : "مترو القاهره",
+  "From" : "من",
+  "To    " : "إلى",
+  "Get Direction" : "احصل على اتجاه",
+  "Tickets Price" : "تكلفة التذكرة",
+  "Metro Map" : "خريطة المترو",
+  "Tip:" : "تنويه:",
+  "Press " : "اضغط ",
+  " to get your nearest Metro Station." : " لمعرفة اقرب محطة لموقعك الحالي.",
+  "Language" : "لغة",
+  "Dark Mode" : "الوضع المظلم",
+  "Number of Stations: " : "عدد المحطات: ",
+  "How Many Tickets you need" : "كم عدد التذاكر",
+  "Calculate" : "احسب",
+  "It Costs:" : "التكلفة",
+  "Choose a Start Station" : "اختر محطة البداية",
+  "Choose a Terminal Station" : "اختر محطة النهاية",
+  "Your Route" : "طريقك",
+  "Line 1" : "الخط الاول",
+  "Line 2" : "الخط الثاني",
+  "Line 3" : "الخط الثالث"
+}

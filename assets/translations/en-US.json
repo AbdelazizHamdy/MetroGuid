@@ -1,0 +1,23 @@
+{
+  "Metro" : "Metro",
+  "From" : "From",
+  "To    " : "To",
+  "Get Direction" : "Get Direction",
+  "Tickets Price" : "Tickets Price",
+  "Metro Map" : "Metro Map",
+  "Tip:" : "Tip:",
+  "Press " : "Press ",
+  " to get your nearest Metro Station." : " to get your nearest Metro Station.",
+  "Language" : "Language",
+  "Dark Mode" : "Dark Mode",
+  "Number of Stations: " : "Number of Stations: ",
+  "How Many Tickets you need" : "How Many Tickets you need",
+  "Calculate" : "Calculate",
+  "It Costs:" : "It Costs:",
+  "Choose a Start Station" : "Choose a Start Station",
+  "Choose a Terminal Station" : "Choose a Terminal Station",
+  "Your Route" : "Your Route",
+  "Line 1" : "Line 1",
+  "Line 2" : "Line 2",
+  "Line 3" : "Line 3"
+}

@@ -1,12 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:metro_guid/cubit/app_cubit.dart';
 import 'package:metro_guid/logic/metro_lines.dart';
 import 'package:metro_guid/view/widgets/metro_map.dart';
 import 'package:metro_guid/view/widgets/route_stations_view.dart';
+import 'package:metro_guid/view/widgets/settings.dart';
 import 'package:metro_guid/view/widgets/tickets_costs.dart';
 import 'package:metro_guid/view/widgets/from_station_home.dart';
 import 'package:metro_guid/view/widgets/to_stations.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 import '../logic/line_1_repo.dart';
 
 class MetroHome extends StatefulWidget {
@@ -17,35 +19,32 @@ class MetroHome extends StatefulWidget {
 }
 
 class _MetroHomeState extends State<MetroHome> {
+  var formKey = GlobalKey<FormState>();
    TextEditingController fromController = TextEditingController();
    TextEditingController toController = TextEditingController();
    late List<Stations> stations;
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         elevation: 20.0,
         backgroundColor: Colors.deepOrange,
-        title: const Text('Metro'),
+        title:  Text('Metro'.tr().toString(),
+          style: Theme.of(context).textTheme.subtitle1,
+        ),
         actions: [
-          ToggleSwitch(
-            minWidth: 50.0,
-            minHeight: 5.0,
-            initialLabelIndex: 1,
-            cornerRadius: 100.0,
-            activeFgColor: Colors.white,
-            inactiveBgColor: Colors.grey,
-            inactiveFgColor: Colors.white,
-            totalSwitches: 2,
-            labels: const ['Eng', 'AR'],
-            activeBgColors: const [
-              [Colors.deepOrange],
-              [Colors.deepOrange]
-            ],
-            onToggle: (index) {
-              print('switched to: $index');
-              // changeLanguage(index!);
-            },
+          IconButton(
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.settings)
           ),
         ],
       ),
@@ -56,23 +55,25 @@ class _MetroHomeState extends State<MetroHome> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Image.asset('assets/images/logo.png',width: width * 0.7,height: height * 0.2,),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('From',
-                        style: TextStyle(
+                       Text('From'.tr().toString(),
+                        style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.deepOrangeAccent,
-                      ),),
-                      const SizedBox(
-                        width: 10,
+                      ),
+                      ),
+                       SizedBox(
+                        width: width * 0.01,
                       ),
                       Expanded(
                         child: Container(
-                          height: 40.0,
+                          height: height * 0.05,
                           width: double.infinity,
                           child: TextFormField(
                             decoration: const InputDecoration(
@@ -92,12 +93,7 @@ class _MetroHomeState extends State<MetroHome> {
                                 fromController.text = stationName;
                           },
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              textBaseline: TextBaseline.alphabetic,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(
@@ -122,27 +118,27 @@ class _MetroHomeState extends State<MetroHome> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
+                 SizedBox(
+                  height: height * 0.01,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('To ',
-                        style: TextStyle(
+                       Text('To    '.tr().toString(),
+                        style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.deepOrangeAccent,
                       ),
                       ),
-                      const SizedBox(
-                        width: 10,
+                       SizedBox(
+                        width: width *.03,
                       ),
                       Expanded(
                         child: Container(
-                          height: 40.0,
+                          height: height * .05,
                           width: double.infinity,
                           child: TextFormField(
                               readOnly: true,
@@ -162,12 +158,7 @@ class _MetroHomeState extends State<MetroHome> {
                                 toController.text = stationName;
                               },
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            textBaseline: TextBaseline.alphabetic,
-                          ),
+                            style: Theme.of(context).textTheme.bodyText1
                               ),
                           decoration: BoxDecoration(
                             border: Border.all(
@@ -183,34 +174,35 @@ class _MetroHomeState extends State<MetroHome> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20.0,
+                 SizedBox(
+                  height: height * 0.025,
                 ),
                 TextButton(
                   onPressed: ()
                   {
-                    // List<Stations>
-                     stations = StationsLine1Repo.getDirectionsAllLines(fromController.text, toController.text);
-                    print('Number of Stations ${stations.length}');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  RouteView(stations: stations,),
-                      ),
-                    );
+                      stations = StationsLine1Repo.getDirectionsAllLines(
+                          fromController.text, toController.text);
+                      print('Number of Stations ${stations.length}');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RouteView(stations: stations,),
+                        ),
+                      );
+
                   },
-                  child: const Text(
-                    "Get Direction",
+                  child:  Text(
+                    "Get Direction".tr().toString(),
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 25,
                       color: Colors.deepOrangeAccent,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20.0,
+                 SizedBox(
+                  height: height * .025,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -225,26 +217,26 @@ class _MetroHomeState extends State<MetroHome> {
                         );
                       },
                       child: Container(
-                        height: 90,
-                        width: 110,
+                        height: height * 0.12,
+                        width: width * 0.30,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
                           color: Colors.deepOrange,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(
+                          children:  [
+                            const Icon(
                                 Icons.map,
                                 size: 40,
                                 color: Colors.white,
                             ),
                             SizedBox(
-                              height: 5,
+                              height: height * 0.009,
                             ),
-                            Text(
-                              'Metro Map',
-                              style: TextStyle(
+                             Text(
+                              'Metro Map'.tr().toString(),
+                              style: const TextStyle(
                                 fontSize: 18.0,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
@@ -264,26 +256,26 @@ class _MetroHomeState extends State<MetroHome> {
                         );
                       },
                       child: Container(
-                        height: 90,
-                        width: 110,
+                        height: height * 0.12,
+                        width: width * 0.30,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
                           color: Colors.deepOrange,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(
+                          children:  [
+                            const Icon(
                               FontAwesomeIcons.dollarSign,
                               color: Colors.white,
                               size: 37,
                             ),
                             SizedBox(
-                              height: 5,
+                              height: height * 0.009,
                             ),
-                            Text(
-                              'Tickets Price',
-                              style: TextStyle(
+                             Text(
+                              'Tickets Price'.tr().toString(),
+                              style: const TextStyle(
                                 fontSize: 18.0,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
@@ -295,15 +287,15 @@ class _MetroHomeState extends State<MetroHome> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 50,
+                 SizedBox(
+                  height: height * 0.08,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
+                  children:  [
                     Text(
-                      'Tip:',
-                      style: TextStyle(
+                      'Tip:'.tr().toString(),
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.redAccent,
@@ -311,29 +303,23 @@ class _MetroHomeState extends State<MetroHome> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
+                 SizedBox(
+                  height: height * 0.01,
                 ),
                 Row(
                   children: [
-                    const Text(
-                      'Press ',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                     Text(
+                      'Press '.tr().toString(),
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                     Container(
-                      height: 20,
-                      width: 20,
-                      child: Image.asset('assets/images/myLocationIcon.png'),
+                      height: height * 0.05,
+                      width: width * 0.05,
+                      child: Image.asset('assets/images/myLocationIcon.png',),
                     ),
-                    const Text(
-                      ' to get your nearest Metro Station.',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                     Text(
+                      ' to get your nearest Metro Station.'.tr().toString(),
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ],
                 ),

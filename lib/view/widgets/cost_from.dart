@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:timelines/timelines.dart';
 import '../../logic/line_1_repo.dart';
@@ -17,11 +18,8 @@ class CostFrom extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              const Text('Choose a Start Station ',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold
-                ),
+               Text('Choose a Start Station '.tr().toString(),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -39,17 +37,19 @@ class CostFrom extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Container(
-                            child: const Text(
-                              'Line 1',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                            child:  Center(
+                              child: Text(
+                                'Line 1'.tr().toString(),
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
                             ),
                             color: Colors.yellow.shade800,
-                            height: 40,
+                            height: height * 0.5,
                             width: double.infinity,
                           ),
                           Container(
@@ -104,25 +104,28 @@ class CostFrom extends StatelessWidget {
                         child: Container(
                           width: width * 0.457,
                           color: Colors.black54,
-                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Container(
-                                child: const Text(
-                                  'Line 2',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
+                                child: Center(
+                                  child: Text(
+                                    'Line 2'.tr().toString(),
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
                                   ),
                                 ),
                                 color: Colors.yellow.shade800,
-                                height: 40,
+                                height: height * 0.05,
                                 width: double.infinity,
                               ),
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.847,
+                                height: height * 0.847,
                                 child: Timeline.tileBuilder(
                                   shrinkWrap: true,
                                   theme: TimelineThemeData.raw(
@@ -131,7 +134,10 @@ class CostFrom extends StatelessWidget {
                                     nodePosition: 0.8,
                                     indicatorPosition: 0.5,
                                     indicatorTheme: IndicatorTheme.of(context),
-                                    connectorTheme: const ConnectorThemeData(color: Colors.red,thickness: 5.0),
+                                    connectorTheme: const ConnectorThemeData(
+                                        color: Colors.red,
+                                        thickness: 5.0,
+                                    ),
                                     nodeItemOverlap: false,
                                   ),
                                   builder: TimelineTileBuilder.fromStyle(
@@ -162,6 +168,7 @@ class CostFrom extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(height: height * 0.02,),
                       Padding(
                         padding: const EdgeInsets.only(
                           left: 1.0,
@@ -174,21 +181,21 @@ class CostFrom extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Container(
-                                child: const Text(
-                                  'Line 3',
+                                child: Text(
+                                  'Line 3'.tr().toString(),
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
                                   ),
                                 ),
                                 color: Colors.yellow.shade800,
-                                height: 40,
+                                height: height * 0.05,
                                 width: double.infinity,
                               ),
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.847,
+                                height: height * 0.847,
                                 child: Timeline.tileBuilder(
                                   shrinkWrap: true,
                                   theme: TimelineThemeData.raw(
@@ -197,7 +204,10 @@ class CostFrom extends StatelessWidget {
                                     nodePosition: 0.8,
                                     indicatorPosition: 0.5,
                                     indicatorTheme: IndicatorTheme.of(context),
-                                    connectorTheme: const ConnectorThemeData(color: Colors.green,thickness: 5.0),
+                                    connectorTheme: const ConnectorThemeData(
+                                        color: Colors.green,
+                                        thickness: 5.0,
+                                    ),
                                     nodeItemOverlap: false,
                                   ),
                                   builder: TimelineTileBuilder.fromStyle(

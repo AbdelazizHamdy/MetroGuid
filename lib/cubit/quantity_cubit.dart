@@ -1,6 +1,8 @@
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:metro_guid/cubit/quantity_repo.dart';
+import 'package:metro_guid/cubit/state.dart';
 
 class QuantityCubit extends Cubit<QuantityState>{
   QuantityCubit() : super(QuantityState(1));
